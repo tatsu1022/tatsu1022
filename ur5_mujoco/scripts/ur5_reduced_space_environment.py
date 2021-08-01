@@ -54,7 +54,7 @@ class UR5SpaceReducedEnvironment:
         self.init_qvel = self.sim.data.qvel.ravel().copy()
 
         # まとめて環境のランダマイズ前の初期化関数に。 
-        self.box_dimension = [0.06, 0.06, 0.06] 
+        self.box_dimension = [0.06, 0.06, 0.06]  # must not exceed the target area dim
         self.target_area_dimension = [0.12, 0.12, 0.001]
 
         self.arm_link_model = UR5TwoLinkModel()   
@@ -355,37 +355,6 @@ class UR5SpaceReducedEnvironment:
 
         low, high = self.model.actuator_ctrlrange[3].copy().astype(np.float32)
         return max(min(ctrl_value, high), low)
-
-    def get_box_vertices_pos(self):
-        box_pos = self.sim.data.get_body_xpos('box')
-        quat = self.sim.data.get_body_xquat('box')
-        rotmat = np.array(quat2mat(quat)).astype(np.float32)
-        tfmat = np.vstack((np.hstack((rotmat, box_pos.reshape(-1,1))), [0,0,0,1]))
-        
-        box_dimension = self.box_dimension  # dimension of box(cuboid): [x,y,z] <- randomization
-        vertices_pos = []
-        for b in range(8):  # cuboid: 8
-            mask = format(b, '#05b')[2:]
-            vertex = np.array([-box_dimension[i] if int(mask[i]) else box_dimension[i] for i in range(len(box_dimension))]).astype(np.float32)
-            vertex = np.matmul(tfmat, np.concatenate((vertex, [1])))
-            assert vertex[-1] == 1.
-            vertices_pos.append(vertex[:3])
-
-        return np.array(vertices_pos)
-
-    def get_target_area_vertices_pos(self): # not considering the rotation
-        area_pos = self.sim.data.get_site_xpos('target_area_geom')
-        target_area_dimension = self.target_area_dimension[:2] # dimension of target area, z_pos is fixed to 0.
-        
-        vertices_pos = []
-        for b in range(4):  # square: 4
-            mask = format(b, '#04b')[2:]
-            vertex = np.array([-target_area_dimension[i] if int(mask[i]) else target_area_dimension[i] for i in range(len(target_area_dimension))]).astype(np.float32)
-            vertex += area_pos[:2]
-            vertex = np.concatenate((vertex, [0]))
-            vertices_pos.append(vertex)
-
-        return np.array(vertices_pos)
 
     def close(self):
         if self.viewer is not None:

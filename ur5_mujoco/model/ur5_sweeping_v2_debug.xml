@@ -191,25 +191,36 @@
         <!--<body name="box" pos="0.1 0.6 0.03">-->
         <body name="box" pos="-0.06788677 0.6377859 0.05896261" quat="8.42530081e-01  3.50218214e-04  2.16883289e-04 -5.38649136e-01">
             <freejoint/>
-            <geom name="box_geom" type="box" size="0.06 0.06 0.06" mass="0.01" solimp="1 1 0 0.5 2" friction="0.3 0.005 0.0001" rgba="1 0 0 1"/>
+            <geom name="box_geom" type="box" size="0.06 0.03 0.08" mass="0.01" solimp="1 1 0 0.5 2" friction="0.3 0.005 0.0001" rgba="1 0 0 1"/>
+            <site name="box_center_point" type="sphere" pos="0 0 0" size="0.01" rgba="0 1 1 1"/>
        	            
-            <!--
-            <site name="vertex0" type="sphere" pos="0.06 0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
-            <site name="vertex1" type="sphere" pos="0.06 0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
-            <site name="vertex2" type="sphere" pos="0.06 -0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
-            <site name="vertex3" type="sphere" pos="0.06 -0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
-            <site name="vertex4" type="sphere" pos="-0.06 0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
-            <site name="vertex5" type="sphere" pos="-0.06 0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
-            <site name="vertex6" type="sphere" pos="-0.06 -0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
-            <site name="vertex7" type="sphere" pos="-0.06 -0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
-            -->
+            
+            <site name="box_vertex0" type="sphere" pos="0.06 0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_vertex1" type="sphere" pos="0.06 0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_vertex2" type="sphere" pos="0.06 -0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_vertex3" type="sphere" pos="0.06 -0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_vertex4" type="sphere" pos="-0.06 0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_vertex5" type="sphere" pos="-0.06 0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_vertex6" type="sphere" pos="-0.06 -0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_vertex7" type="sphere" pos="-0.06 -0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+
+            <site name="box_probe0" type="sphere" pos="0.06 0.03 0" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe1" type="sphere" pos="0.06 -0.03 0" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe2" type="sphere" pos="-0.06 0.03 0" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe3" type="sphere" pos="-0.06 -0.03 0" size="0.007" rgba="0 0.2 1 1"/>
+
+            <site name="box_probe4" type="sphere" pos="0.06 0 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe5" type="sphere" pos="0.06 0 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe6" type="sphere" pos="-0.06 0 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe7" type="sphere" pos="-0.06 0 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+
+            <site name="box_probe8" type="sphere" pos="0 0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe9" type="sphere" pos="0 0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe10" type="sphere" pos="0 -0.03 0.08" size="0.007" rgba="0 0.2 1 1"/>
+            <site name="box_probe11" type="sphere" pos="0 -0.03 -0.08" size="0.007" rgba="0 0.2 1 1"/>
+            
         </body>
 
-
-        <site name="vertex0" type="sphere" pos=" 0.05173891  0.60854224 0" size="0.007" rgba="0 0.2 1 1"/>
-        <site name="vertex1" type="sphere" pos="-0.05717975  0.55817633 0" size="0.007" rgba="0 0.2 1 1"/>
-        <site name="vertex2" type="sphere" pos=" 0.001373    0.71746089 0" size="0.007" rgba="0 0.2 1 1"/>
-        <site name="vertex3" type="sphere" pos="-0.10754566  0.66709497 0" size="0.007" rgba="0 0.2 1 1"/>
 
         <!-- <body name="target_area" pos="-0.1 0.6 0.03">
             <geom name="target_area_geom" type="box" size="0.12 0.12 0.001" mass="0.01" solimp="1 1 0 0.5 2" friction="2 2 2" rgba="0 1 0 1"/>
@@ -217,6 +228,7 @@
 
         <site name="target_area_geom" type="box" pos="-0.1 0.6 0.0" size="0.12 0.12 0.001" rgba="0 1 0 1"/>
         
+                
         <site name="area_vertex0" type="sphere" pos="0.02        0.71999997  0." size="0.007" rgba="0 0.2 1 1"/>
         <site name="area_vertex1" type="sphere" pos="0.02        0.47999999  0." size="0.007" rgba="0 0.2 1 1"/>
         <site name="area_vertex2" type="sphere" pos="-0.22        0.71999997  0." size="0.007" rgba="0 0.2 1 1"/>
